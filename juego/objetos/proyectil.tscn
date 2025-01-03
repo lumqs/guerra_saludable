@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvsregwtvrpq4"]
+
+[ext_resource type="Script" path="res://juego/objetos/proyectil.gd" id="1_r703q"]
+[ext_resource type="Texture2D" uid="uid://cogfekcsu4pc3" path="res://juego/objetos/proyectil_400.png" id="3_bectj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rbfw"]
+atlas = ExtResource("3_bectj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bue3b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rbfw")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hsn64"]
+radius = 3.01351
+height = 21.9703
+
+[node name="proyectil" type="RigidBody2D"]
+position = Vector2(18, 0)
+collision_layer = 32
+collision_mask = 3
+gravity_scale = 0.0
+script = ExtResource("1_r703q")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(61, 6)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_bue3b")
+
+[node name="Area2D" type="Area2D" parent="." groups=["municion"]]
+collision_layer = 32
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(60, 5)
+rotation = 1.58459
+shape = SubResource("CapsuleShape2D_hsn64")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

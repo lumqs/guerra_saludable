@@ -1,0 +1,202 @@
+[gd_scene load_steps=29 format=3 uid="uid://bo6g2d7ljhj7v"]
+
+[ext_resource type="Script" path="res://juego/personaje/lucas.gd" id="1_gycjt"]
+[ext_resource type="Texture2D" uid="uid://cuyep0ocga72f" path="res://juego/personaje/png/lucas_idle_400_ultimate-Sheet.png" id="2_5i2tp"]
+[ext_resource type="Texture2D" uid="uid://bpa802a0nbf8o" path="res://juego/personaje/png/lucas_attack_400-Sheet.png" id="2_447uh"]
+[ext_resource type="Texture2D" uid="uid://cu2qcgk1ngok" path="res://juego/personaje/png/lucas_jump_400-Sheet.png" id="3_mmwje"]
+[ext_resource type="PackedScene" uid="uid://cegsd2v27wxhf" path="res://juego/personaje/camera_2d.tscn" id="3_ukm3s"]
+[ext_resource type="Texture2D" uid="uid://dntffhfy5s36k" path="res://juego/personaje/png/lucas_walk_400-Sheet.png" id="5_bcy38"]
+[ext_resource type="Texture2D" uid="uid://dbofo2687w5jq" path="res://juego/personaje/png/lucas_shoot_400-Sheet.png" id="5_i6yyg"]
+[ext_resource type="Script" path="res://juego/personaje/hitbox.gd" id="8_0fb1a"]
+[ext_resource type="PackedScene" uid="uid://dnroda7hlfkqr" path="res://juego/UI/barra_vida.tscn" id="10_ri37q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8dk4"]
+atlas = ExtResource("2_447uh")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4370c"]
+atlas = ExtResource("2_447uh")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_woff1"]
+atlas = ExtResource("2_447uh")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2qaj"]
+atlas = ExtResource("2_447uh")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifa1a"]
+atlas = ExtResource("3_mmwje")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqt4o"]
+atlas = ExtResource("2_5i2tp")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xb5v7"]
+atlas = ExtResource("2_5i2tp")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyyok"]
+atlas = ExtResource("2_5i2tp")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvus6"]
+atlas = ExtResource("2_5i2tp")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xusbf"]
+atlas = ExtResource("3_mmwje")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldfrt"]
+atlas = ExtResource("5_i6yyg")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h63pc"]
+atlas = ExtResource("5_i6yyg")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6y5q"]
+atlas = ExtResource("5_bcy38")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hf4wy"]
+atlas = ExtResource("5_bcy38")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tljlh"]
+atlas = ExtResource("5_bcy38")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kr0wh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8dk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4370c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_woff1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2qaj")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifa1a")
+}],
+"loop": false,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqt4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xb5v7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyyok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvus6")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xusbf")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldfrt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h63pc")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6y5q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hf4wy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tljlh")
+}],
+"loop": false,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lk7bk"]
+radius = 18.0
+height = 76.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qklqw"]
+radius = 23.0
+height = 82.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pfpem"]
+radius = 34.2345
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["Personaje"]]
+collision_layer = 16
+script = ExtResource("1_gycjt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kr0wh")
+animation = &"attack"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_lk7bk")
+
+[node name="Camera2D" parent="." instance=ExtResource("3_ukm3s")]
+
+[node name="Area2D" type="Area2D" parent="." groups=["Personaje"]]
+collision_layer = 16
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -3)
+shape = SubResource("CapsuleShape2D_qklqw")
+debug_color = Color(0.666667, 0.458824, 0.615686, 0.192157)
+
+[node name="hitbox" type="Area2D" parent="." groups=["espada"]]
+collision_layer = 64
+collision_mask = 2
+script = ExtResource("8_0fb1a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(31, 1)
+shape = SubResource("CircleShape2D_pfpem")
+debug_color = Color(0.273802, 0.612602, 0.450094, 0.42)
+
+[node name="barra_vida" parent="." instance=ExtResource("10_ri37q")]
+
+[connection signal="perder_vida" from="." to="barra_vida" method="_on_character_body_2d_perder_vida"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="hitbox" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

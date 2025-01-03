@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cj8l8bhbd3pd"]
+
+[ext_resource type="Script" path="res://juego/alimentos/data_base_alimentos.gd" id="1_0o3cp"]
+
+[node name="DataBaseAlimentos" type="Node"]
+script = ExtResource("1_0o3cp")

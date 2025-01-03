@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://ctvcrcjajcpfr"]
+
+[ext_resource type="Script" path="res://juego/UI/elegir_personaje.gd" id="1_s13yu"]
+[ext_resource type="Texture2D" uid="uid://bt816buixjf5t" path="res://juego/UI/main_base_400.png" id="2_kmnir"]
+[ext_resource type="Texture2D" uid="uid://cuyep0ocga72f" path="res://juego/personaje/png/lucas_idle_400_ultimate-Sheet.png" id="6_e617h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7aoj"]
+atlas = ExtResource("6_e617h")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6c86r"]
+atlas = ExtResource("6_e617h")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jt3ql"]
+atlas = ExtResource("6_e617h")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uw6qh"]
+atlas = ExtResource("6_e617h")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6a1pr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7aoj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6c86r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jt3ql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uw6qh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="elegir_personaje" type="Node"]
+script = ExtResource("1_s13yu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(575, 326)
+texture = ExtResource("2_kmnir")
+
+[node name="empezar_juego" type="Button" parent="CanvasLayer"]
+offset_left = 454.0
+offset_top = 477.0
+offset_right = 725.0
+offset_bottom = 532.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(921, 315)
+scale = Vector2(1.7, 1.7)
+sprite_frames = SubResource("SpriteFrames_6a1pr")
+autoplay = "default"
+
+[connection signal="pressed" from="CanvasLayer/empezar_juego" to="." method="_on_empezar_juego_pressed"]

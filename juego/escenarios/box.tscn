@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnqhppguq7lnk"]
+
+[ext_resource type="Texture2D" uid="uid://drmrihuobd8i" path="res://Assets_PixelAdventure/Items/Boxes/Box1/Idle.png" id="1_laiyn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1k7x0"]
+size = Vector2(36, 36)
+
+[node name="box" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_laiyn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1k7x0")

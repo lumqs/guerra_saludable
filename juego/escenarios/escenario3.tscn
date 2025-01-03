@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://xhr7ou2nqjqi"]
+
+[ext_resource type="PackedScene" uid="uid://c46biepsbecx4" path="res://juego/escenarios/terreno.tscn" id="1_v843t"]
+[ext_resource type="PackedScene" uid="uid://5r1kiy8iiybj" path="res://juego/escenarios/objeto.tscn" id="2_1wnl8"]
+[ext_resource type="PackedScene" uid="uid://bo6g2d7ljhj7v" path="res://juego/personaje/Personaje.tscn" id="3_apvqs"]
+[ext_resource type="PackedScene" uid="uid://dvsv2gvlfa00p" path="res://juego/escenarios/caer.tscn" id="4_7btk5"]
+[ext_resource type="PackedScene" uid="uid://cnqhppguq7lnk" path="res://juego/escenarios/box.tscn" id="5_molrf"]
+[ext_resource type="PackedScene" uid="uid://136cdnbl78cj" path="res://juego/alimentos/alimento.tscn" id="6_v32v0"]
+[ext_resource type="PackedScene" uid="uid://ccyhxrmhuv86n" path="res://juego/enemys/enemy_fly.tscn" id="7_slond"]
+
+[node name="Node" type="Node"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_v843t")]
+
+[node name="escenario4" parent="." instance=ExtResource("2_1wnl8")]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("3_apvqs")]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 124.0
+offset_top = 81.0
+offset_right = 365.0
+offset_bottom = 198.0
+scale = Vector2(2.41536, 2.9775)
+text = "Felicidades Pa"
+
+[node name="escenario3" parent="." instance=ExtResource("4_7btk5")]
+position = Vector2(-505, 580)
+
+[node name="box" parent="." instance=ExtResource("5_molrf")]
+position = Vector2(600, 308)
+
+[node name="alimento_base" parent="." instance=ExtResource("6_v32v0")]
+position = Vector2(415.352, 439.807)
+
+[node name="enemy_fly" parent="." instance=ExtResource("7_slond")]
+position = Vector2(206.731, 453.664)
+
+[node name="enemy_fly2" parent="." instance=ExtResource("7_slond")]
+position = Vector2(-181.15, 143.536)

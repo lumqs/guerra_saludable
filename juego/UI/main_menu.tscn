@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://y5ysrbwr4hws"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_ibxgi"]
+[ext_resource type="Texture2D" uid="uid://bt816buixjf5t" path="res://juego/UI/main_base_400.png" id="2_klqfe"]
+[ext_resource type="Texture2D" uid="uid://dw86m6cbdip85" path="res://juego/UI/nueva_partida_400_base.png" id="3_c0161"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ajs8p"]
+texture = ExtResource("3_c0161")
+
+[node name="Node" type="Node"]
+script = ExtResource("1_ibxgi")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="fondo" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(577, 330)
+texture = ExtResource("2_klqfe")
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 377.0
+offset_top = 324.0
+offset_right = 806.0
+offset_bottom = 410.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_ajs8p")
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnroda7hlfkqr"]
+
+[ext_resource type="Script" path="res://juego/UI/barra_vida.gd" id="1_5jgbf"]
+[ext_resource type="Texture2D" uid="uid://cacj1o0nrde81" path="res://juego/UI/NUEVAS_BARRAS/bar_5slot_base_nuevo_400.png" id="3_ocyl1"]
+[ext_resource type="Texture2D" uid="uid://b5bj85kvmkcyi" path="res://juego/UI/NUEVAS_BARRAS/rellenos/vida_400.png" id="4_jaxuf"]
+[ext_resource type="Texture2D" uid="uid://bavnev7vdwv12" path="res://juego/UI/NUEVAS_BARRAS/rellenos/rostro_lucas_400.png" id="5_pv8vb"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_5jgbf")
+
+[node name="Barra_vida" type="Sprite2D" parent="."]
+position = Vector2(188, 71)
+scale = Vector2(2, 2)
+texture = ExtResource("3_ocyl1")
+
+[node name="slot_1" type="Sprite2D" parent="Barra_vida"]
+position = Vector2(-28, 0)
+texture = ExtResource("4_jaxuf")
+
+[node name="slot_2" type="Sprite2D" parent="Barra_vida"]
+position = Vector2(-16, 0)
+texture = ExtResource("4_jaxuf")
+
+[node name="slot_3" type="Sprite2D" parent="Barra_vida"]
+position = Vector2(-4, 0)
+texture = ExtResource("4_jaxuf")
+
+[node name="slot_4" type="Sprite2D" parent="Barra_vida"]
+position = Vector2(8, 0)
+texture = ExtResource("4_jaxuf")
+
+[node name="slot_5" type="Sprite2D" parent="Barra_vida"]
+position = Vector2(20, 0)
+texture = ExtResource("4_jaxuf")
+
+[node name="rostro" type="Sprite2D" parent="Barra_vida"]
+position = Vector2(20, -1.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_pv8vb")

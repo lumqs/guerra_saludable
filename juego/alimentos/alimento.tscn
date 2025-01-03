@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://136cdnbl78cj"]
+
+[ext_resource type="Script" path="res://juego/alimentos/alimento.gd" id="1_01bkt"]
+[ext_resource type="Texture2D" uid="uid://c2177bmqqw3vf" path="res://juego/alimentos/png/agua_base_32x32.png" id="2_qbxac"]
+[ext_resource type="Texture2D" uid="uid://dig6rildb7g4d" path="res://juego/alimentos/png/Steak.png" id="3_781ih"]
+[ext_resource type="PackedScene" uid="uid://cj8l8bhbd3pd" path="res://juego/alimentos/data_base_alimentos.tscn" id="3_d8kv0"]
+[ext_resource type="Texture2D" uid="uid://iw2k825xu7r3" path="res://juego/alimentos/png/Apple.png" id="4_jgmdb"]
+[ext_resource type="Texture2D" uid="uid://en3laooen3e1" path="res://juego/alimentos/png/Tomato.png" id="5_oko42"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0dehg"]
+radius = 19.105
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8074"]
+atlas = ExtResource("2_qbxac")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pn0ix"]
+atlas = ExtResource("3_781ih")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aayva"]
+atlas = ExtResource("4_jgmdb")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1fk1"]
+atlas = ExtResource("5_oko42")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p10wd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8074")
+}],
+"loop": false,
+"name": &"agua",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pn0ix")
+}],
+"loop": false,
+"name": &"carne",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aayva")
+}],
+"loop": false,
+"name": &"manzana",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1fk1")
+}],
+"loop": false,
+"name": &"tomate",
+"speed": 5.0
+}]
+
+[node name="alimento_base" type="Area2D" groups=["alimento"]]
+collision_mask = 16
+script = ExtResource("1_01bkt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(35, 29)
+shape = SubResource("CircleShape2D_0dehg")
+
+[node name="skin" type="AnimatedSprite2D" parent="."]
+position = Vector2(35, 28)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_p10wd")
+animation = &"agua"
+
+[node name="recoger" type="Label" parent="."]
+offset_left = -14.0
+offset_top = -43.0
+offset_right = 89.0
+offset_bottom = 6.0
+scale = Vector2(0.992766, 0.992766)
+text = "\"R\" Recoger
+\"C\" Consumir"
+
+[node name="DataBaseAlimentos" parent="." instance=ExtResource("3_d8kv0")]
+
+[connection signal="area_entered" from="." to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

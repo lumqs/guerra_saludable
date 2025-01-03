@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cegsd2v27wxhf"]
+
+[ext_resource type="Script" path="res://juego/personaje/camera_2d.gd" id="1_s06br"]
+[ext_resource type="PackedScene" uid="uid://da282eu6drady" path="res://juego/UI/inventario.tscn" id="3_4m0m4"]
+
+[node name="Camera2D" type="Camera2D"]
+script = ExtResource("1_s06br")
+
+[node name="inventario" parent="." instance=ExtResource("3_4m0m4")]

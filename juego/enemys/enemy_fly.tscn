@@ -1,0 +1,116 @@
+[gd_scene load_steps=15 format=3 uid="uid://ccyhxrmhuv86n"]
+
+[ext_resource type="Script" path="res://juego/enemys/enemy_fly.gd" id="1_mm42u"]
+[ext_resource type="Texture2D" uid="uid://duqeuxx4ixk10" path="res://juego/enemys/png/candy_base_32-Sheet.png" id="2_t4g8k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndtmm"]
+atlas = ExtResource("2_t4g8k")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anvhh"]
+atlas = ExtResource("2_t4g8k")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fc4tn"]
+atlas = ExtResource("2_t4g8k")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpkdu"]
+atlas = ExtResource("2_t4g8k")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_io0rk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndtmm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anvhh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fc4tn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpkdu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_45q0p"]
+radius = 17.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0y5co"]
+radius = 409.646
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_87xge"]
+radius = 20.0
+
+[sub_resource type="Gradient" id="Gradient_3m3xu"]
+offsets = PackedFloat32Array(0, 0.00333333, 1)
+colors = PackedColorArray(0.243137, 0.243137, 0.243137, 1, 0.243137, 0.243137, 0.243137, 1, 0.243137, 0.243137, 0.243137, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jh0ik"]
+gradient = SubResource("Gradient_3m3xu")
+width = 40
+height = 6
+
+[sub_resource type="Gradient" id="Gradient_266e7"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_17l10"]
+gradient = SubResource("Gradient_266e7")
+width = 40
+height = 6
+
+[node name="enemy_fly" type="CharacterBody2D" groups=["enemigo"]]
+collision_layer = 2
+collision_mask = 112
+script = ExtResource("1_mm42u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_io0rk")
+frame = 3
+frame_progress = 1.0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(4, -8)
+shape = SubResource("CircleShape2D_45q0p")
+
+[node name="area_grande" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 16
+
+[node name="Collision_deteccion" type="CollisionShape2D" parent="area_grande"]
+position = Vector2(4, 4)
+shape = SubResource("CircleShape2D_0y5co")
+
+[node name="recibir_daño" type="Area2D" parent="." groups=["enemigo"]]
+collision_layer = 2
+collision_mask = 112
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="recibir_daño"]
+position = Vector2(4, -8)
+shape = SubResource("CircleShape2D_87xge")
+debug_color = Color(0.706971, 0.388233, 0.7628, 0.42)
+
+[node name="Heath_Bar" type="TextureProgressBar" parent="."]
+offset_left = -16.0
+offset_top = -37.0
+offset_right = 24.0
+offset_bottom = 3.0
+max_value = 60.0
+texture_under = SubResource("GradientTexture2D_jh0ik")
+texture_progress = SubResource("GradientTexture2D_17l10")
+tint_progress = Color(0.777814, 0.114424, 0.124262, 1)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+
+[connection signal="area_entered" from="recibir_daño" to="." method="_on_recibir_daño_area_entered"]
+[connection signal="area_exited" from="recibir_daño" to="." method="_on_recibir_daño_area_exited"]
+[connection signal="body_entered" from="recibir_daño" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

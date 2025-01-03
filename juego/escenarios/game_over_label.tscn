@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://hcw0j2musbvw"]
+
+[node name="Label" type="Label"]
+offset_left = 54.0
+offset_top = 55.0
+offset_right = 141.0
+offset_bottom = 78.0
+text = "Game Over"
